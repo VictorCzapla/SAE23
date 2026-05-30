@@ -1,0 +1,43 @@
+.presentation {
+  display: flex;  /*aligner sur une même ligne*/
+  align-items: center;  /*centrer verticalement*/      
+  margin: 80px auto;
+  padding: 0 40px; /*espace entre le contenant et l'encadré*/
+  gap: 60px;
+  max-width: 1200px;
+}
+
+.presentation .photo {
+  text-align: right;
+}
+
+.presentation h2,
+.presentation p {
+  margin: 0;
+  font-size: 20px;
+}
+
+
+.image-accueil {
+  width: 300px;
+  height: 350px;
+  
+}
+
+
+
+@media (max-width: 900px) {
+  .presentation {
+    flex-direction: column; /*s'empile et forme une colonne*/
+    text-align: center; /*texte aligné au centre*/
+    gap: 30px; /*espace entre les éléments*/
+  }
+
+  
+
+  .image-accueil {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+  }
+}

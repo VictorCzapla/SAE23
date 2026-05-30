@@ -1,0 +1,302 @@
+/* CSS style2 adaptatif */
+body 
+{
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+header 
+{
+  position: fixed;  /*élement toujours visible même en scrollant */
+  top: 0; 
+  width: 100%; 
+  background-color: #1E3A8A;
+  color : white;
+
+}
+
+hr.dot 
+{
+	 border: dotted 2px;
+	 width: 80%;
+}
+
+.navbar1 ul {
+	list-style-type: none; /*pas de point car liste ul*/
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #4B5563;
+	border-top: 2px solid #FFFFFF;
+	
+	 
+}
+.navbar2 ul {
+  list-style-type: none; /*pas de point car liste ul*/
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #6B7280; 
+  border-top: 2px solid #FFFFFF;
+}
+
+
+.couleur2
+{
+  background-color: #3380CC;
+}
+.couleur1 {
+	background-color: #004C99;
+}
+
+.image-taille-ligne {
+  width: 120px;
+  height: 120px;
+}
+
+.icons-container {
+  display: flex; /*aligner sur la même ligne*/
+  justify-content: center;   /*Centrer sur la page*/                        
+  margin-top: 40px; /*Espace entre les images et le texte*/
+}
+
+.video-coin {
+	border-radius: 10px;
+}
+nav a {
+  text-decoration: none; /*les liens nav ne sont pas soulignés */
+}	
+nav ul li /*alignés les items des nav */
+{
+  float: left; 
+}
+
+nav ul li a 
+{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  padding: 12px 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;  /* 0.3 pour que la couleur change et 0.2 pour que l'onglet grossit */
+}
+
+nav ul li a:hover:not(.first)
+{
+  background-color: #FFFFFF;
+  color: black;
+  transform: scale(1.05); /*augmente de taille*/
+}
+
+section 
+{
+  line-height: 1.6; /*espace entre les lignes */
+}
+
+aside#last 
+{
+  padding-top: 25px;	
+  padding-left: 20px;
+  padding-bottom: 90px;
+}
+
+aside a
+{
+  text-decoration: none; /*cache le fait que ça soit souligné car il y a un lien */
+}
+
+aside img
+{
+	width:88px;
+	height:31px
+}
+		
+h1
+{ 
+  text-align: center;
+}
+
+footer 
+{
+  position: fixed; /*élement toujours visible même en scrollant */
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 15px;
+  background-color: #1E3A8A;
+  color: white;
+  text-align: center;
+  
+}
+
+footer ul li
+{
+  float: left; /*aligner sur une même ligne */
+  width:33%;/*33% de l'espace*/
+  list-style-type: none; /*pas de point car liste ul*/
+}
+
+footer ul li:first-child /* en bas le premier texte s'aligne à gauche*/
+{
+  text-align: left;
+}
+
+footer ul li:last-child /*le premier texte s'aligne à droite*/
+{
+  text-align: right;
+}
+p, h2, ul {
+  margin-left: 80px; /*marge à gauche et à droite du contenu*/
+  margin-right: 80px; 
+}
+h2 {
+	margin-top: 20px; /*espace au dessus des titres*/
+	text-decoration: underline;
+    color: #2c3e50;
+}
+
+.box-noir {
+  border: 2px solid #000;       
+  border-radius: 10px;   /* coins des encadrés noirs*/                         
+  margin-top: 20px;    /*espace au dessus des encadrés*/                
+}
+main {
+  margin-top: 200px;
+  padding: 0 45px; 
+}
+.taille {
+  display: block; /*prend toute la place et forme un block*/
+  max-width: 100%;  
+  height: auto;     /*ajuste sa taille*/
+  margin: auto;   /*l'élément se centre tout seul*/
+}
+.menu-lien:link {
+  color: blue;
+  text-decoration: none;
+}
+
+.menu-lien:visited {
+  color: green;
+}
+
+.menu-lien:hover {
+  color: purple;
+  text-decoration: underline;
+}
+
+.menu-lien:active {
+  color: orange;
+}
+th, td {
+  border: 1px solid #000000;
+  padding: 8px 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; /*supprime l'espace entre les bordures (cellules collées)*/
+  margin-top: 10px;
+}
+
+
+    
+
+
+/* max-width pour fortes résolutions */
+@media screen and (min-width: 1280px) 
+{
+	nav ul li 
+	{
+		float: left;
+		border-right:1px solid #BBBBBB;
+	}
+		
+	nav ul li:last-child
+	{
+		border-right: none;
+	
+	}
+	.icons-container {
+	gap: 300px;
+	}
+	
+}
+ 
+
+/* max-width pour faibles résolutions */
+@media screen and (max-width: 640px) 
+{
+	nav ul li 
+	{
+		float: none;
+		width: 100%;
+		border-right: none;
+		font-size:16px;
+	}
+
+	nav ul li a 
+	{
+		padding: 1px;
+	}
+
+	section 
+	{
+		padding-top: 5px;
+		padding-right: 15px;
+		font-size: 16px;
+
+	}
+	.icons-container { /*l'espace entre les images se réduit*/
+	gap: 10px;
+	}
+footer{
+	font-size:14px;
+	padding: 5px 2px;
+}
+footer ul {
+    margin: 0; 
+  }
+h1 {
+	font-size: 20px;
+	
+}
+aside#last {
+	font-size: 15px;
+}
+p, h2, ul {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  main {
+    padding: 0 10px; /*l'encadré n'est pas collé aux bordures de la plage*/
+  }
+
+  .box-noir {
+    margin: 10px 0;
+    padding: 10px;
+    overflow-x: auto;        /* active le scroll horizontal uniquement à l’intérieur */
+    overflow-y: hidden;      /* empêche le scroll vertical à l’intérieur */
+  }
+  .box-noir table {
+  font-size:12px;
+  width: 100%;
+  text-align: left;
+  }
+  .image-taille-ligne {
+  width: 100px;
+  height: 100px;
+  }
+  body.espace-navbar2 main {
+  margin-top: 300px; /* descend un peu plus quand il y a 2 barres */
+}
+ body.espace-navbar2-petite main {
+  margin-top: 250px; /* descend un peu plus quand il y a 2 barres */
+}
+.badge {
+	width: 13%;
+	height: 13%;
+}
+	
+ 
+}
