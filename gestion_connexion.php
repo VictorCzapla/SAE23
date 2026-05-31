@@ -5,12 +5,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $identifiant = $_POST['identifiant'];
     $password = $_POST['password'];
     $connexion = mysqli_connect('localhost', 'root', 'sae23.blagnac', 'sae23');
-    $req = mysqli_query($connexion, "SELECT * FROM Batiment WHERE login_gestionnaire = '$identifiant' AND mdp_gestionnaire = '$password'");
-    $user = mysqli_fetch_assoc($req);
+    $requete = mysqli_query($connexion, "SELECT * FROM Gestionnaires WHERE login_gestion = '$identifiant' AND mdp_gestion = '$password'");
+    $user = mysqli_fetch_assoc($requete);
     if ($user) {
         $_SESSION['user'] = $identifiant;
         $_SESSION['role'] = 'gestionnaire';
-        header('Location: dashboard.php');
+        header('Location: gestion.php');
     } else {
         $erreur = "Identifiants incorrects";
     }
@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    <nav class="navbar1">
     <ul>
      <li><a href="index.html">Accueil</a></li>
+	 <li><a href="admin_connexion.php">Administration</a></li>
      <li><a href="#" class="couleur1">Gestion</a></li>
      <li><a href="consult.html">Consultation</a></li>
      <li><a href="gestion_proj.html">Gestion de projet</a></li>
@@ -43,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <main>
   <section class="box-noir">
     <h2> Formulaire de connexion </h2>
-    <form name="connexion_gestion" action="gestion.php" method="post">
+    <form name="connexion_gestion" action="gestion_connexion.php" method="post">
         <fieldset>
             <p>
                 <label for="identifiant">Identifiant : </label>
