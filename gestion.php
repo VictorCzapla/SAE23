@@ -9,8 +9,8 @@ if (!isset($_SESSION['user']) || $_SESSION['role'] !== 'gestionnaire') {
 $connexion = mysqli_connect('localhost', 'root', 'sae23.blagnac', 'sae23');
 $login = $_SESSION['user'];
 
-$requete = mysqli_query($connexion, "
-    SELECT Salle.nom_salle, Capteur.nom_capteur, Capteur.unite, Mesure.valeur, Mesure.date, Mesure.heure
+$requete_derniere = mysqli_query($connexion, "
+    SELECT Salle.nom_salle, Capteur.nom_capteur, Capteur.unite, Mesure.valeur
     FROM Bâtiment
     JOIN Salle ON Salle.id_bat = Bâtiment.id_bat
     JOIN Capteur ON Capteur.nom_salle = Salle.nom_salle
@@ -18,12 +18,28 @@ $requete = mysqli_query($connexion, "
     WHERE Bâtiment.login_gestionnaire = '$login'
     AND Capteur.type = 'température'
     AND Mesure.id_mesure = (
-        SELECT MAX(Mesure2.id_mesure)
-        FROM Mesure Mesure2
-        WHERE Mesure2.nom_capteur = Capteur.nom_capteur
+        SELECT id_mesure FROM Mesure
+        WHERE Mesure.nom_capteur = Capteur.nom_capteur
+        ORDER BY id_mesure DESC
+        LIMIT 1
     )
     ORDER BY Salle.nom_salle
 ");
+
+$requete_stats = mysqli_query($connexion, "
+    SELECT Capteur.nom_capteur,
+        MAX(Mesure.valeur) AS valeur_max,
+        MIN(Mesure.valeur) AS valeur_min
+    FROM Capteur
+    JOIN Mesure ON Mesure.nom_capteur = Capteur.nom_capteur
+    WHERE Capteur.type = 'température'
+    GROUP BY Capteur.nom_capteur
+");
+
+$stats = [];
+while ($ligne = mysqli_fetch_assoc($requete_stats)) {
+    $stats[$ligne['nom_capteur']] = $ligne;
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -58,17 +74,17 @@ $requete = mysqli_query($connexion, "
             <tr>
                 <th>Salle</th>
                 <th>Capteur</th>
-                <th>Température</th>
-                <th>Date</th>
-                <th>Heure</th>
+                <th>Dernière valeur</th>
+                <th>Maximum</th>
+                <th>Minimum</th>
             </tr>
-            <?php while ($ligne = mysqli_fetch_assoc($requete)) { ?>
+            <?php while ($ligne = mysqli_fetch_assoc($requete_derniere)) { ?>
             <tr>
                 <td><?php echo $ligne['nom_salle']; ?></td>
                 <td><?php echo $ligne['nom_capteur']; ?></td>
                 <td><?php echo $ligne['valeur'] . ' ' . $ligne['unite']; ?></td>
-                <td><?php echo $ligne['date']; ?></td>
-                <td><?php echo $ligne['heure']; ?></td>
+                <td><?php echo $stats[$ligne['nom_capteur']]['valeur_max'] . ' ' . $ligne['unite']; ?></td>
+                <td><?php echo $stats[$ligne['nom_capteur']]['valeur_min'] . ' ' . $ligne['unite']; ?></td>
             </tr>
             <?php } ?>
         </table>
