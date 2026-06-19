@@ -199,8 +199,27 @@ table {
 }
 
 
-    
+.bloc-vignette {
+    display: flex;
+    justify-content: center; 
+    margin: 25px auto;
+    text-decoration: none;
+}
 
+.vignette {
+    max-width: 400px; 
+    width: 100%;
+    height: auto; 
+    border: 2px solid #1E3A8A;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.vignette:hover {
+    transform: scale(1.02); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
 
 /* max-width pour fortes résolutions */
 @media screen and (min-width: 1280px) 
