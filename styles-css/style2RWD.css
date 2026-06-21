@@ -1,4 +1,3 @@
-/* CSS style2 adaptatif */
 body 
 {
   margin: 0;
@@ -6,34 +5,35 @@ body
   font-size: 18px;
 }
 
+/* Fixed header, always visible while scrolling */
 header 
 {
-  position: fixed;  /*élement toujours visible même en scrollant */
+  position: fixed;
   top: 0; 
   width: 100%; 
   background-color: #1E3A8A;
   color : white;
-
 }
 
 hr.dot 
 {
-	 border: dotted 2px;
-	 width: 80%;
+  border: dotted 2px;
+  width: 80%;
 }
 
+/* Primary navigation bar */
 .navbar1 ul {
-	list-style-type: none; /*pas de point car liste ul*/
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #4B5563;
-	border-top: 2px solid #FFFFFF;
-	
-	 
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4B5563;
+  border-top: 2px solid #FFFFFF;
 }
+
+/* Secondary navigation bar */
 .navbar2 ul {
-  list-style-type: none; /*pas de point car liste ul*/
+  list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -41,281 +41,295 @@ hr.dot
   border-top: 2px solid #FFFFFF;
 }
 
+/* Active page highlight colors */
+.couleur2 { background-color: #3380CC; }
+.couleur1 { background-color: #004C99; }
 
-.couleur2
-{
-  background-color: #3380CC;
-}
-.couleur1 {
-	background-color: #004C99;
-}
-
-.image-taille-ligne {
-  width: 120px;
-  height: 120px;
-}
-
-.icons-container {
-  display: flex; /*aligner sur la même ligne*/
-  justify-content: center;   /*Centrer sur la page*/                        
-  margin-top: 40px; /*Espace entre les images et le texte*/
-}
-
-.video-coin {
-	border-radius: 10px;
-}
+/* Nav links : no underline */
 nav a {
-  text-decoration: none; /*les liens nav ne sont pas soulignés */
-}	
-nav ul li /*alignés les items des nav */
-{
-  float: left; 
+  text-decoration: none;
 }
+
+/* Nav items aligned horizontally */
+nav ul li { float: left; }
 
 nav ul li a 
 {
   display: block;
   color: white;
   text-align: center;
-  padding: 15px;
   padding: 12px 20px;
-  transition: background-color 0.3s ease, transform 0.2s ease;  /* 0.3 pour que la couleur change et 0.2 pour que l'onglet grossit */
+  /* Smooth background and scale transition on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Hover effect : white background and slight scale up */
 nav ul li a:hover:not(.first)
 {
   background-color: #FFFFFF;
   color: black;
-  transform: scale(1.05); /*augmente de taille*/
+  transform: scale(1.05);
 }
 
-section 
-{
-  line-height: 1.6; /*espace entre les lignes */
+/* Main content pushed down to avoid overlap with fixed header */
+main {
+  margin-top: 200px;
+  padding: 0 45px; 
 }
 
-aside#last 
-{
-  padding-top: 25px;	
-  padding-left: 20px;
-  padding-bottom: 90px;
-}
-
-aside a
-{
-  text-decoration: none; /*cache le fait que ça soit souligné car il y a un lien */
-}
-
-aside img
-{
-	width:88px;
-	height:31px
-}
-		
-h1
-{ 
-  text-align: center;
-}
-
+/* Fixed footer, always visible while scrolling */
 footer 
 {
-  position: fixed; /*élement toujours visible même en scrollant */
+  position: fixed;
   bottom: 0;
   width: 100%;
   padding-bottom: 15px;
   background-color: #1E3A8A;
   color: white;
   text-align: center;
-  
 }
 
+/* Footer items split into 3 equal columns */
 footer ul li
 {
-  float: left; /*aligner sur une même ligne */
-  width:33%;/*33% de l'espace*/
-  list-style-type: none; /*pas de point car liste ul*/
+  float: left;
+  width: 33%;
+  list-style-type: none;
 }
 
-footer ul li:first-child /* en bas le premier texte s'aligne à gauche*/
-{
-  text-align: left;
-}
+footer ul li:first-child { text-align: left; }
+footer ul li:last-child  { text-align: right; }
 
-footer ul li:last-child /*le premier texte s'aligne à droite*/
-{
-  text-align: right;
-}
+/* Global left/right margin for text content */
 p, h2, ul {
-  margin-left: 80px; /*marge à gauche et à droite du contenu*/
+  margin-left: 80px;
   margin-right: 80px; 
 }
+
+h1 { text-align: center; }
+
 h2 {
-	margin-top: 20px; /*espace au dessus des titres*/
-	text-decoration: underline;
-    color: #2c3e50;
+  margin-top: 20px;
+  text-decoration: underline;
+  color: #2c3e50;
 }
 
+section { line-height: 1.6; }
+
+/* Black bordered card */
 .box-noir {
-  border: 2px solid #000;       
-  border-radius: 10px;   /* coins des encadrés noirs*/                         
-  margin-top: 20px;    /*espace au dessus des encadrés*/                
+  border: 2px solid #000;
+  border-radius: 10px;
+  margin-top: 20px;
 }
-main {
-  margin-top: 200px;
-  padding: 0 45px; 
-}
-.taille {
-  display: block; /*prend toute la place et forme un block*/
-  max-width: 100%;  
-  height: auto;     /*ajuste sa taille*/
-  margin: auto;   /*l'élément se centre tout seul*/
-}
-.menu-lien:link {
-  color: blue;
+
+/* Specific box-noir adaptation for image links (reuses borders and radius without divs) */
+a.box-noir.bloc-vignette {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 450px;    /* Prevents the black box from stretching full width */
+  margin: 20px auto;   /* Centers the black box horizontally */
+  padding: 15px;       /* Internal breathing room around the image */
   text-decoration: none;
 }
 
-.menu-lien:visited {
-  color: green;
+/* Responsive image */
+.taille {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
 }
 
-.menu-lien:hover {
-  color: purple;
-  text-decoration: underline;
+/* Image row icons container */
+.image-taille-ligne {
+  width: 120px;
+  height: 120px;
 }
 
-.menu-lien:active {
-  color: orange;
+.icons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
+
+/* Rounded video corners */
+.video-coin { border-radius: 10px; }
+
+/* Thumbnail image frame style inside the black card */
+.vignette {
+  max-width: 100%;       /* Dynamically fits the 450px card parent */
+  height: auto;
+  border: 1px solid #1E3A8A;
+  border-radius: 5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+/* Hover effect on image inside the combined box-noir anchor block */
+a.box-noir.bloc-vignette:hover .vignette {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 th, td {
   border: 1px solid #000000;
   padding: 8px 10px;
 }
 
+/* Collapsed borders, full width */
 table {
   width: 100%;
-  border-collapse: collapse; /*supprime l'espace entre les bordures (cellules collées)*/
+  border-collapse: collapse;
   margin-top: 10px;
 }
 
+/* Colored link states */
+.menu-lien:link    { color: blue;   text-decoration: none; }
+.menu-lien:visited { color: green; }
+.menu-lien:hover   { color: purple; text-decoration: underline; }
+.menu-lien:active  { color: orange; }
 
-.bloc-vignette {
-    display: flex;
-    justify-content: center; 
-    margin: 25px auto;
-    text-decoration: none;
+.form-admin {
+  padding: 20px;
+  margin-left: 60px;
 }
 
-.vignette {
-    max-width: 400px; 
-    width: 100%;
-    height: auto; 
-    border: 2px solid #1E3A8A;
-    border-radius: 5px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
+/* Fieldset with no visible border */
+.form-fieldset-clean {
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
-.vignette:hover {
-    transform: scale(1.02); 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+aside#last {
+  padding-top: 25px;
+  padding-left: 20px;
+  padding-bottom: 90px;
 }
 
-/* max-width pour fortes résolutions */
+/* Hide underline on aside links */
+aside a { text-decoration: none; }
+
+/* W3C validation badge size */
+aside img {
+  width: 88px;
+  height: 31px;
+}
+
+/* Layout helpers */
+.section-margin-top    { margin-top: 30px; padding-bottom: 20px; }
+.section-padding-bottom { padding-bottom: 20px; }
+.container-padding-80  { padding: 0 80px; }
+
+/* Text alignment */
+.text-center-italic { text-align: center; font-style: italic; }
+.text-center        { text-align: center; }
+
+/* Feedback message colors */
+.msg-success { color: green;  margin-left: 80px; }
+.msg-error   { color: red;    margin-left: 80px; }
+.msg-warning { color: orange; margin-left: 80px; }
+
+/* Inline text colors */
+.text-alert-error  { color: red; }
+.text-primary-bold { color: #1E3A8A; font-weight: bold; }
+.text-danger       { color: #EF4444; }
+.text-info         { color: #3B82F6; }
+
+/* Red logout button */
+.btn-deconnexion { background-color: #b91c1c; }
+
 @media screen and (min-width: 1280px) 
 {
-	nav ul li 
-	{
-		float: left;
-		border-right:1px solid #BBBBBB;
-	}
-		
-	nav ul li:last-child
-	{
-		border-right: none;
-	
-	}
-	.icons-container {
-	gap: 300px;
-	}
-	
-}
- 
+  /* Separator between nav items */
+  nav ul li 
+  {
+    float: left;
+    border-right: 1px solid #BBBBBB;
+  }
+    
+  nav ul li:last-child { border-right: none; }
 
-/* max-width pour faibles résolutions */
+  /* Wider gap between icons on large screens */
+  .icons-container { gap: 300px; }
+}
+
 @media screen and (max-width: 640px) 
 {
-	nav ul li 
-	{
-		float: none;
-		width: 100%;
-		border-right: none;
-		font-size:16px;
-	}
-
-	nav ul li a 
-	{
-		padding: 1px;
-	}
-
-	section 
-	{
-		padding-top: 5px;
-		padding-right: 15px;
-		font-size: 16px;
-
-	}
-	.icons-container { /*l'espace entre les images se réduit*/
-	gap: 10px;
-	}
-footer{
-	font-size:14px;
-	padding: 5px 2px;
-}
-footer ul {
-    margin: 0; 
+  /* Nav items stack vertically on mobile */
+  nav ul li 
+  {
+    float: none;
+    width: 100%;
+    border-right: none;
+    font-size: 16px;
   }
-h1 {
-	font-size: 20px;
-	
-}
-aside#last {
-	font-size: 15px;
-}
-p, h2, ul {
+
+  nav ul li a { padding: 1px; }
+
+  section 
+  {
+    padding-top: 5px;
+    padding-right: 15px;
+    font-size: 16px;
+  }
+
+  /* Tighter icon gap on small screens */
+  .icons-container { gap: 10px; }
+
+  footer 
+  {
+    font-size: 14px;
+    padding: 5px 2px;
+  }
+
+  footer ul { margin: 0; }
+
+  h1 { font-size: 20px; }
+
+  aside#last { font-size: 15px; }
+
+  p, h2, ul 
+  {
     margin-left: 10px;
     margin-right: 10px;
   }
 
-  main {
-    padding: 0 10px; /*l'encadré n'est pas collé aux bordures de la plage*/
-  }
+  /* Prevent card from touching screen edges */
+  main { padding: 0 10px; }
 
-  .box-noir {
+  /* Horizontal scroll inside cards on overflow */
+  .box-noir 
+  {
     margin: 10px 0;
     padding: 10px;
-    overflow-x: auto;        /* active le scroll horizontal uniquement à l’intérieur */
-    overflow-y: hidden;      /* empêche le scroll vertical à l’intérieur */
+    overflow-x: auto;
+    overflow-y: hidden;
   }
-  .box-noir table {
-  font-size:12px;
-  width: 100%;
-  text-align: left;
+
+  .box-noir table 
+  {
+    font-size: 12px;
+    width: 100%;
+    text-align: left;
   }
-  .image-taille-ligne {
-  width: 100px;
-  height: 100px;
+
+  .image-taille-ligne 
+  {
+    width: 100px;
+    height: 100px;
   }
-  body.espace-navbar2 main {
-  margin-top: 300px; /* descend un peu plus quand il y a 2 barres */
-}
- body.espace-navbar2-petite main {
-  margin-top: 250px; /* descend un peu plus quand il y a 2 barres */
-}
-.badge {
-	width: 13%;
-	height: 13%;
-}
-	
- 
+
+  /* Extra top margin when a second navbar is present */
+  body.espace-navbar2 main       { margin-top: 300px; }
+  body.espace-navbar2-petite main { margin-top: 250px; }
+
+  /* Smaller validation badges on mobile */
+  .badge 
+  {
+    width: 13%;
+    height: 13%;
+  }
 }
